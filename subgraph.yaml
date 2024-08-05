@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DelabsDailyJourney
+    network: arbitrum-one
+    source:
+      address: "0x48693F8950f0c0060AAEb3E73CFB1f7B2304e4e8"
+      abi: DelabsDailyJourney
+      startBlock: 216844041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DailyCheckin
+        - DailyDraw
+      abis:
+        - name: DelabsDailyJourney
+          file: ./abis/DelabsDailyJourney.json
+      eventHandlers:
+        - event: DailyCheckin(indexed address)
+          handler: handleDailyCheckin
+        - event: DailyDraw(indexed address)
+          handler: handleDailyDraw
+      file: ./src/delabs-daily-journey.ts

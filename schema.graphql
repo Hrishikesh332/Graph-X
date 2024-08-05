@@ -1,0 +1,15 @@
+type DailyCheckin @entity(immutable: true) {
+  id: Bytes!
+  walletAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DailyDraw @entity(immutable: true) {
+  id: Bytes!
+  walletAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
